@@ -174,3 +174,61 @@ body {
   margin-top: 0.5em;
 }
 
+/* for fade */
+.hover-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9; /* ✅ 固定宽高比例，可根据你的图片比例调整 */
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* 图片层 */
+.hover-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill; /* 或者用 contain，根据你需求 */
+  border-radius: 10px;
+  display: block;
+}
+
+/* 视频层 */
+.hover-box video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* object-fit: fill;  */
+  object-fit: contain; /* 保持原始比例显示 */
+  background-color: black; /* 可选，用黑底填充空白 */
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* 悬停显示视频 */
+.hover-box:hover video {
+  opacity: 1;
+}
+
+.container2 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  text-align: center;
+}
+
+/* 单个卡片：标题 + 视频 */
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 标题美化 */
+.item .title {
+  margin-bottom: 10px;
+}

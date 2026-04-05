@@ -67,9 +67,9 @@
 </section>
 
 <section class="section">
-  <div class="columns is-centered">
-    <div class="column is-full-width is-centered has-text-centered">
-      <img src="./static/images/pipeline.png" alt="" style="width: 50%;" />
+  <div class="container">
+    <div class="column is-centered has-text-centered">
+      <img src="./static/images/pipeline.png" alt="" style="width: 100%;" />
     </div>
   </div>
 </section>
@@ -78,15 +78,111 @@
   <div class="container">
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
-      <div class="column is-two-thirds">
+      <div class="column ">
         <h2 class="title is-2">Abstract</h2>
         <div class="content has-text-justified">
-          <p>
-            We present a learning-enhanced motion planner for differential drive mobile manipulators that tackles the problem about task representation and solution multiplicity. For task representation, we propose a keypoint sequence extraction module that maps boundary states to 3D space via differentiable forward kinematics. Point clouds and keypoints are encoded separately and fused with attention, enabling effective integration of environment and boundary states information. We also propose a primitive-based truncated diffusion model that samples from a biased distribution. Compared with vanilla diffusion model, this framework improves the efficiency and diversity of the solution. Denoised paths are refined by trajectory optimization to ensure dynamic feasibility and task-specific optimality. In cluttered 3D simulations, our method achieves higher success rate, improved trajectory diversity, and competitive runtime compared to vanilla diffusion and classical baselines.
+          <p style="font-size: 30px;">
+            We present a learning-enhanced motion planner for differential drive mobile manipulators to improve efficiency, success rate, and optimality. For task representation encoder, we propose a keypoint sequence extraction module that maps boundary states to 3D space via differentiable forward kinematics. Point clouds and keypoints are encoded separately and fused with attention, enabling effective integration of environment and boundary states information. We also propose a primitive-based truncated diffusion model that samples from a biased distribution. Compared with vanilla diffusion model, this framework improves the efficiency and diversity of the solution. Denoised paths are refined by trajectory optimization to ensure dynamic feasibility and task-specific optimality. In cluttered 3D simulations, our method achieves higher success rate, improved trajectory diversity, and competitive runtime compared to vanilla diffusion and classical baselines.
           </p>
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2" style="text-align: center;">Differences between Frameworks</h2>
+    <div class="hover-box">
+      <video muted autoplay loop playsinline>
+        <source src="assets/Introo.mp4" type="video/mp4">
+      </video>
+      <img src="assets/intro.png" alt="">
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2" style="text-align: center;">Benchmark Comparisons</h2>
+    <div class="column is-1"></div>
+    <h2 class="title is-4" style="text-align: center;">Simulation Environment</h2>
+    <div class="columns is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="assets/simulation_x264.mp4" poster="./resources/loading-icon.gif" style="width: 75%; border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+    </div>
+
+    <h2 class="title is-4" style="text-align: center;">Quantitative Comparisons</h2>
+    <h2 class="title is-6" style="text-align: center;">Success Rate (S.R.[%]), Time Consumption of Planning (T.P. [ms])</h2>
+    <h2 class="title is-6" style="text-align: center;">Diversity Score (D.S.), Path Ratio (P.R., ratio of trajectory duration with <a href="https://github.com/TopAY-Planner/TopAY" target="_blank">TopAY</a>)</h2>
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <img src="assets/main_res.png" alt="" />
+      </div>
+    </div>
+    
+    <h2 class="title is-4" style="text-align: center;">Comparisons With TopAY</h2>
+    <div class="columns is-centered has-text-centered">
+      <div class="container2">
+        <div class="item">
+          <h2 class="title is-6">Environment: <i>Cuboids</i></h2>
+          <div class="hover-box">
+            <video muted autoplay loop playsinline>
+              <source src="assets/bk_cuboids_x264.mp4" type="video/mp4">
+            </video>
+            <img src="assets/bk_cuboids.PNG" alt="Cuboids">
+          </div>
+        </div>
+
+        <div class="item">
+          <h2 class="title is-6">Environment: <i>Mixed</i></h2>
+          <div class="hover-box">
+            <video muted autoplay loop playsinline>
+              <source src="assets/bk_mixed_x264.mp4" type="video/mp4">
+            </video>
+            <img src="assets/bk_mixed.PNG" alt="Mixed">
+          </div>
+        </div>
+
+        <div class="item">
+          <h2 class="title is-6">Environment: <i>Replica</i></h2>
+          <div class="hover-box">
+            <video muted autoplay loop playsinline>
+              <source src="assets/bk_replica_x264.mp4" type="video/mp4">
+            </video>
+            <img src="assets/bk_replica.PNG" alt="Replica">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="title is-4" style="text-align: center;">More Results</h2>
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <img src="assets/c1.PNG" alt="" />
+      </div>
+      <div class="column">
+        <img src="assets/c2.PNG" alt="" />
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <img src="assets/m1.PNG" alt="" />
+      </div>
+      <div class="column">
+        <img src="assets/m2.PNG" alt="" />
+      </div>
+    </div>
+    
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <img src="assets/r1.PNG" alt="" />
+      </div>
+      <div class="column">
+        <img src="assets/r2.PNG" alt="" />
+      </div>
+    </div>
+
   </div>
 </section>
 
