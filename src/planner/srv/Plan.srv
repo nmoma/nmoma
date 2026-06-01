@@ -1,0 +1,12 @@
+uint8 path_num    # number of paths to be sampled
+float32[] start
+float32[] goal
+float32[] boxes
+sensor_msgs/PointCloud2 input_cloud
+uint32 seq
+---
+bool success
+uint8 path_length
+float32[] path
+float32 sample_time
+string message

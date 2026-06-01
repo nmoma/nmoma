@@ -1,0 +1,19 @@
+agent:
+  local_mode: false
+  replan_interval: 1.0
+  planning_horizon: 6.0
+  stat_mode: false
+  stat_num: 1000
+  stat_number: 1
+  only_front: false
+  stat_file: "/log/train/"
+
+grid_map:
+  # real case:
+  # map_size_x: 12.0
+  # map_size_y: 8.0
+  # sim case:
+  map_size_x: 10.0
+  map_size_y: 10.0
+  map_size_z: 1.6
+  resolution: 0.1

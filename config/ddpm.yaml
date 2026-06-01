@@ -1,0 +1,104 @@
+save_model_seperately: false
+exp_dir: "logs"
+# ckpt_dir: "logs/ckpt_mink_trunc_proposed_course"
+# ckpt_dir: "logs/ckpt_mamba_trunc_proposed"
+# ckpt_dir: "logs/ckpt_mamba_trunc_ponly"
+# ckpt_dir: "logs/ckpt_mamba_trunc_attention"
+# ckpt_dir: "logs/ckpt_ptrans_trunc_proposed_tb1"
+# ckpt_dir: "logs/ckpt_ptrans_ddpm_none_tb1"
+# ckpt_dir: "logs/ckpt_ptrans_trunc_fuse_tb1_small"
+# ckpt_dir: "logs/ckpt_ptrans_trunc_fuse_tb1_small4"
+# ckpt_dir: "logs/ckpt_ptrans_trunc_fuse_tb1_small6"
+# ckpt_dir: "logs/ckpt_ptrans_trunc_fuse_tb1"
+# ckpt_dir: "logs/ckpt_ptrans_trunc_fuse_nloss"
+# ckpt_dir: "logs/ckpt_ptrans_trunc_fuse_tb1_nloss"
+# ckpt_dir: "logs/ckpt_ptrans_trunc_proposed_course"
+# ckpt_dir: "logs/ckpt_ptrans_trunc_attention_course"
+# ckpt_dir: "logs/ckpt_ptrans_trunc_ponly"
+# ckpt_dir: "logs/ckpt_mink_ddpm256"
+# ckpt_dir: "logs/ckpt_mink_trunc256"
+# ckpt_dir: "logs/ckpt_mamba_anchor256"
+# ckpt_dir: "logs/ckpt_mamba_ddpm256"
+# ckpt_dir: "logs/ckpt_mamba_trunc256"
+# ckpt_dir: "logs/ckpt_ptrans_anchor256"
+# ckpt_dir: "logs/ckpt_ptrans_ddpm256"
+# ckpt_dir: "logs/ckpt_ptrans_trunc256"
+# ckpt_dir: "logs/ckpt_trunc_ptrans_proposed_exp"
+# ckpt_dir: "logs/ckpt_trunc_ptrans_attention_exp"
+ckpt_dir: "logs/ckpt_trunc_ptrans_none_exp"
+
+
+wandb: "offline" # true or false or "offline"
+diffuser:
+  load_pretrained: false
+  pretrained_path: "logs/ckpt_ptrans_trunc_fuse_tb1_small/model.pth"
+  steps: 1200
+  loss_type: "l2" # "l1" or "l2"
+  # rec, safe, vel, smooth, uniarc, classify, unieearc
+  #! change the unieearc to smooth q, smooth theta
+  # loss_epoch: [0, 0, 100, 0, 0, 0, 0]
+  # loss_epoch: [0, 2, 100, 2, 2, 1, 2]
+  # loss_epoch: [0, 1, 100, 1, 1, 0, 1]
+  # loss_epoch: [1, 2, 100, 2, 2, 0, 2]
+  loss_epoch: [0, 1, 100, 1, 1, 100, 1]
+  # loss_weight: [1.0, 50.0, 0.1, 0.1, 20.0, 1.0, 0.1]
+  loss_weight: [1.0, 50.0, 0.1, 0.1, 20.0, 1.0, 0.5]
+  rand_t_type: 'half' # 'half' or 'all'
+  has_obs: true
+  schedule_cfg:
+    beta: [0.0001, 0.01]
+    beta_schedule: 'linear' # 'linear' or 'exp' or 'cosine'
+    s: 0.008
+  ddim_steps: 2
+  ddim_use: true
+  ddim_eta: 0.1
+  trunc_use: true
+  trunc_type: "trunc"  # "gt" or "anchor" or "trunc"
+  trunc_steps: 50
+  objective: "x0" # "noise" or "x0" or "v"
+  class_loss_type: "focal_loss" # "cross_entropy" or "weighted_cross_entropy" or "focal_loss"
+  add_guidance: false
+  guidin_time: 5
+  guidin_num_per_time: 10
+  guidance:
+    clip_grad: true
+    max_grad_norm: 1.0
+    weights: [0.1, 0.0]  # sdf, smooth
+train:
+  dataset: "train_nonfix.h5"
+  num_epochs: 20
+  batch_size: 64
+  num_workers: 4
+  log_step: 100
+  lr: 1.0e-4
+valid:
+  dataset: "data_valid_raw.h5"
+d_x: 11
+d_model: 512
+# d_model: 256
+d_startgoal: 64
+time_embed_mult: 2
+nblocks: 1 # 2
+resblock_dropout: 0.1
+transformer_num_heads: 8
+transformer_dim_head: 64
+transformer_dropout: 0.1
+transformer_depth: 2
+transformer_mult_ff: 4
+data_normer: "shoot" # "shoot" or "simple"
+use_position_embedding: true # for input x
+scene_model:
+  cond_backbone: "ptans3" # "simple", "minkresnet", "ptans3", "ptmamba"
+  fusion_method: "none" # "proposed", "pspace", "attention", "fuse", "none"
+  add_spacer: true
+  num_points: 4096
+  ptmamba: 
+    c: 3
+    d_model: 512
+    # d_model: 256
+    depth: 4
+    group_size: 32
+    num_group: 128
+    drop_path: 0.1
+    rms_norm: False
+    drop_out: 0.1

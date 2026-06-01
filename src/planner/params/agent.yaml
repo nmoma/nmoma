@@ -1,0 +1,25 @@
+planner_node:
+  agent:
+    mode: "benchmark" # stat, benchmark, planner
+    planner: "ddim" # ddim, moma
+    ddim_path_num: 4
+    local_mode: false
+    planning_budget: 0.5
+    replan_interval: 100.0
+    planning_horizon: 6000.0
+    stat_num: 1000
+    auto_mode: True
+    stat_number: 1
+    only_front: false
+    fixed_startgoal: false
+    random_ee: true
+    pick_state: [3.3, 0.0, 0.0, 1.0259568691253662, 0.7873354554176331, -0.037315141409635544, 0.024556782096624374, 0.09346238523721695, 0.7401068210601807, -1.14198637008667]
+    mid_state: [9.0, 1.5, 0.0, 1.0259568691253662, 0.7873354554176331, -0.037315141409635544, 0.024556782096624374, 0.09346238523721695, 0.7401068210601807, -1.14198637008667]
+    place_state: [11.9, -0.3, 0.0, 1.0259568691253662, 0.7873354554176331, -0.037315141409635544, 0.024556782096624374, 0.09346238523721695, 0.7401068210601807, -1.14198637008667]
+    startgoal_dist_range : [8.0, 15.0]
+    fixed_sequence: false
+    stat_file: "/log/train/"
+    shm_name: moma
+    remani_trial: 1
+    scene_seeded: false
+    scene_seed: 54

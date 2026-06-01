@@ -1,0 +1,17 @@
+# catkin_make generated files
+build/
+devel/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+dist/
+*.egg
+
+.codex/
+.agents/
+logs/
+
+*.h5
