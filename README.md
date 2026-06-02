@@ -31,7 +31,16 @@ docker pull nmoma/nmoma
 inside the container:
 ```
 cd /workspace
-./auto.sh ckpt_anchor_ptrans_attention_exp
+
+git clone https://github.com/nmoma/nmoma.git
+
+hf download nmoma/nmoma \
+  --repo-type dataset \
+  --local-dir .
+
+catkin_make
+
+./auto.sh ckpt_anchor_ptrans_attention_exp # replace with desired experiment
 ```
 ## Manual Setup
 
